@@ -22,31 +22,31 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#0a0b0f",
-        foreground: "#e1e7ef",
+        background: "#030712", // Darker background
+        foreground: "#e2e8f0",
         primary: {
-          DEFAULT: "#6366f1",
+          DEFAULT: "#8b5cf6", // Vibrant purple
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#22d3ee",
+          DEFAULT: "#06b6d4", // Cyan
           foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "#ff5e5b",
+          DEFAULT: "#ef4444",
           foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "#1f2937",
-          foreground: "#9ca3af",
+          DEFAULT: "#1e293b",
+          foreground: "#94a3b8",
         },
         accent: {
           DEFAULT: "#312e81",
           foreground: "#ffffff",
         },
         card: {
-          DEFAULT: "#1a1b26",
-          foreground: "#e1e7ef",
+          DEFAULT: "rgba(30, 41, 59, 0.7)", // Transparent dark slate
+          foreground: "#e2e8f0",
         },
       },
       borderRadius: {
