@@ -22,31 +22,31 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "#0a0b0f",
+        foreground: "#e1e7ef",
         primary: {
-          DEFAULT: "#8B4513",
+          DEFAULT: "#6366f1",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#228B22",
+          DEFAULT: "#22d3ee",
           foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#ff5e5b",
+          foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#1f2937",
+          foreground: "#9ca3af",
         },
         accent: {
-          DEFAULT: "#F5F5DC",
-          foreground: "#000000",
+          DEFAULT: "#312e81",
+          foreground: "#ffffff",
         },
         card: {
-          DEFAULT: "#ffffff",
-          foreground: "#000000",
+          DEFAULT: "#1a1b26",
+          foreground: "#e1e7ef",
         },
       },
       borderRadius: {
@@ -67,11 +67,16 @@ export default {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0)" },
         },
+        glow: {
+          "0%, 100%": { boxShadow: "0 0 15px #6366f1" },
+          "50%": { boxShadow: "0 0 30px #22d3ee" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         slideIn: "slideIn 0.3s ease-out",
+        glow: "glow 3s ease-in-out infinite",
       },
     },
   },
