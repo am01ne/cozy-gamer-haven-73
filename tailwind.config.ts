@@ -25,34 +25,29 @@ export default {
         background: "#030712", // Darker background
         foreground: "#f8fafc",
         primary: {
-          DEFAULT: "#6d28d9", // Deep purple
+          DEFAULT: "#7C3AED", // Vivid purple
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#0ea5e9", // Sky blue
+          DEFAULT: "#06B6D4", // Cyan
           foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "#dc2626", // Bright red
+          DEFAULT: "#EF4444", // Red
           foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "#1e293b",
-          foreground: "#94a3b8",
+          DEFAULT: "#1F2937",
+          foreground: "#9CA3AF",
         },
         accent: {
-          DEFAULT: "#312e81", // Indigo
+          DEFAULT: "#4F46E5", // Indigo
           foreground: "#ffffff",
         },
         card: {
-          DEFAULT: "rgba(30, 41, 59, 0.7)", // Transparent dark slate
+          DEFAULT: "rgba(17, 24, 39, 0.7)", // Transparent dark
           foreground: "#f8fafc",
         },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
@@ -64,19 +59,35 @@ export default {
           to: { height: "0" },
         },
         slideIn: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0)" },
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
         glow: {
-          "0%, 100%": { boxShadow: "0 0 15px #6d28d9" }, // Updated to match primary color
-          "50%": { boxShadow: "0 0 30px #0ea5e9" }, // Updated to match secondary color
+          "0%, 100%": { 
+            boxShadow: "0 0 20px #7C3AED",
+            borderColor: "#7C3AED"
+          },
+          "50%": { 
+            boxShadow: "0 0 30px #06B6D4",
+            borderColor: "#06B6D4"
+          }
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        slideIn: "slideIn 0.3s ease-out",
+        slideIn: "slideIn 0.5s ease-out",
+        fadeIn: "fadeIn 0.5s ease-out",
         glow: "glow 3s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite"
       },
     },
   },

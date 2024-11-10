@@ -6,34 +6,19 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 
-// First, let's install framer-motion for smooth transitions
-<lov-add-dependency>framer-motion@latest</lov-add-dependency>
-
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: "Welcome back!",
-        description: "Successfully logged in.",
-      });
-    }, 1000);
-  };
-
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: "Account created!",
-        description: "Welcome to Transcendance.",
+        title: isLogin ? "Welcome back!" : "Account created!",
+        description: isLogin ? "Successfully logged in." : "Welcome to Transcendance.",
       });
     }, 1000);
   };
@@ -41,24 +26,49 @@ const AuthPage = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left Section - Hero/Branding */}
-      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-primary/20 via-primary to-secondary relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/10 bg-[size:30px_30px]" />
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="hidden lg:flex w-1/2 bg-gradient-to-br from-primary/20 via-primary to-secondary relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
         <div className="relative flex flex-col items-center justify-center w-full p-12 text-white">
-          <h1 className="text-6xl font-bold mb-6">Transcendance</h1>
-          <p className="text-xl text-white/80 text-center max-w-md">
+          <motion.h1 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
+          >
+            Transcendance
+          </motion.h1>
+          <motion.p 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-xl text-white/80 text-center max-w-md"
+          >
             Enter the next level of gaming. Challenge players, climb the leaderboard, and become a legend.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Section - Auth Forms */}
       <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 bg-background/95">
-        <div className="w-full max-w-md space-y-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md space-y-8"
+        >
           {/* OAuth Button */}
-          <div className="mb-8">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
             <Button 
               variant="outline"
-              className="w-full py-6 text-lg border-primary/20 hover:bg-primary/5"
+              className="w-full py-6 text-lg border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
               onClick={() => {
                 toast({
                   title: "42 OAuth",
@@ -66,10 +76,10 @@ const AuthPage = () => {
                 });
               }}
             >
-              <img src="/42_Logo.svg" alt="42" className="w-8 h-8 mr-4" />
+              <img src="/42_Logo.svg" alt="42" className="w-8 h-8 mr-4 group-hover:animate-float" />
               Continue with 42
             </Button>
-          </div>
+          </motion.div>
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
@@ -90,15 +100,15 @@ const AuthPage = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
             >
-              <Card className="p-6 backdrop-blur-lg bg-card/30 border-primary/20">
-                <form onSubmit={isLogin ? handleLogin : handleRegister} className="space-y-4">
+              <Card className="p-6 backdrop-blur-lg bg-card/30 border-primary/20 hover:border-primary/30 transition-colors duration-300">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {!isLogin && (
                     <div className="space-y-2">
                       <Label htmlFor="username">Username</Label>
                       <Input
                         id="username"
                         required
-                        className="bg-muted/50 border-primary/20 focus:border-primary/50"
+                        className="bg-muted/50 border-primary/20 focus:border-primary/50 transition-colors"
                       />
                     </div>
                   )}
@@ -108,7 +118,7 @@ const AuthPage = () => {
                       id="email"
                       type="email"
                       required
-                      className="bg-muted/50 border-primary/20 focus:border-primary/50"
+                      className="bg-muted/50 border-primary/20 focus:border-primary/50 transition-colors"
                     />
                   </div>
                   <div className="space-y-2">
@@ -117,14 +127,14 @@ const AuthPage = () => {
                       id="password"
                       type="password"
                       required
-                      className="bg-muted/50 border-primary/20 focus:border-primary/50"
+                      className="bg-muted/50 border-primary/20 focus:border-primary/50 transition-colors"
                     />
                   </div>
 
                   {isLogin && (
                     <div className="text-sm text-right">
-                      <a 
-                        href="#" 
+                      <button 
+                        type="button"
                         className="text-primary hover:text-primary/80 transition-colors"
                         onClick={(e) => {
                           e.preventDefault();
@@ -135,13 +145,13 @@ const AuthPage = () => {
                         }}
                       >
                         Forgot password?
-                      </a>
+                      </button>
                     </div>
                   )}
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
+                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity animate-glow"
                     disabled={loading}
                   >
                     {loading ? (
@@ -166,7 +176,7 @@ const AuthPage = () => {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
