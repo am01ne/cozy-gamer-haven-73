@@ -21,10 +21,10 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-background">
+    <div className="min-h-[calc(100vh-4rem)] w-full bg-background">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,18,18,0.8)_0%,rgba(29,185,84,0.2)_50%,rgba(18,18,18,0.8)_100%)] animate-pulse" />
       
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 lg:px-8 relative">
+      <div className="min-h-[calc(100vh-4rem)] w-full flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 lg:px-8 relative">
         <WelcomeSection />
 
         {/* Right side with auth form */}

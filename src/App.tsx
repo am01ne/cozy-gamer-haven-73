@@ -17,9 +17,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-background text-foreground bg-[url('/grid.svg')] bg-fixed bg-center bg-repeat before:absolute before:inset-0 before:z-0 before:bg-background/95">
+        <div className="min-h-screen w-full bg-background text-foreground bg-[url('/grid.svg')] bg-fixed bg-center bg-repeat before:absolute before:inset-0 before:z-0 before:bg-background/95">
           <Navbar />
-          <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6">
+          <main className="w-full relative z-10">
             <Routes>
               <Route path="/" element={<Navigate to="/auth" replace />} />
               <Route path="/auth" element={<AuthPage />} />
