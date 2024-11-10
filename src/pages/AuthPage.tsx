@@ -3,180 +3,200 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import PingPongBall from "@/components/PingPongBall";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: isLogin ? "Welcome back!" : "Account created!",
-        description: isLogin ? "Successfully logged in." : "Welcome to Transcendance.",
-      });
-    }, 1000);
+    // Simulate loading
+    setTimeout(() => setLoading(false), 1000);
   };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Left Section - Hero/Branding */}
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="hidden lg:flex w-1/2 bg-gradient-to-br from-primary/20 via-primary to-secondary relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="relative flex flex-col items-center justify-center w-full p-12 text-white">
-          <motion.h1 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
-          >
-            Transcendance
-          </motion.h1>
-          <motion.p 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl text-white/80 text-center max-w-md"
-          >
-            Enter the next level of gaming. Challenge players, climb the leaderboard, and become a legend.
-          </motion.p>
-        </div>
-      </motion.div>
+    <div className="min-h-screen bg-background">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,18,0.7)_0%,rgba(124,58,237,0.2)_50%,rgba(3,7,18,0.7)_100%)] animate-pulse" />
+      
+      <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-8 relative">
+        {/* Left side content */}
+        <div className="lg:w-1/2 p-12 relative z-10">
+          <motion.div className="relative">
+            <motion.h1 
+              className="text-5xl font-bold mb-6 text-foreground"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              Welcome to Transcendance 🏓
+            </motion.h1>
+            <motion.p
+              className="text-xl text-foreground/80 mb-4"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Join the ultimate ping pong community
+            </motion.p>
+            <motion.p
+              className="text-md text-primary"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              Where every match tells a story
+            </motion.p>
 
-      {/* Right Section - Auth Forms */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 bg-background/95">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-md space-y-8"
-        >
-          {/* OAuth Button */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Button 
-              variant="outline"
-              className="w-full py-6 text-lg border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
-              onClick={() => {
-                toast({
-                  title: "42 OAuth",
-                  description: "Redirecting to 42 authentication...",
-                });
+            {/* Animated decorative elements */}
+            <motion.div 
+              className="absolute -right-20 top-0"
+              animate={{ 
+                rotate: [0, 180, 360],
+                y: [0, -15, 0],
+                x: [0, 10, 0]
+              }}
+              transition={{ 
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
               }}
             >
-              <img src="/42_Logo.svg" alt="42" className="w-8 h-8 mr-4 group-hover:animate-float" />
-              Continue with 42
-            </Button>
-          </motion.div>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-primary/10" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={isLogin ? "login" : "register"}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Card className="p-6 backdrop-blur-lg bg-card/30 border-primary/20 hover:border-primary/30 transition-colors duration-300">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {!isLogin && (
-                    <div className="space-y-2">
-                      <Label htmlFor="username">Username</Label>
-                      <Input
-                        id="username"
-                        required
-                        className="bg-muted/50 border-primary/20 focus:border-primary/50 transition-colors"
-                      />
-                    </div>
-                  )}
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      required
-                      className="bg-muted/50 border-primary/20 focus:border-primary/50 transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      required
-                      className="bg-muted/50 border-primary/20 focus:border-primary/50 transition-colors"
-                    />
-                  </div>
-
-                  {isLogin && (
-                    <div className="text-sm text-right">
-                      <button 
-                        type="button"
-                        className="text-primary hover:text-primary/80 transition-colors"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          toast({
-                            title: "Password Reset",
-                            description: "Check your email for reset instructions.",
-                          });
-                        }}
-                      >
-                        Forgot password?
-                      </button>
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity animate-glow"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      isLogin ? "Logging in..." : "Creating account..."
-                    ) : (
-                      isLogin ? "Login" : "Register"
-                    )}
-                  </Button>
-                </form>
-              </Card>
-
-              <div className="mt-4 text-center text-sm">
-                <span className="text-muted-foreground">
-                  {isLogin ? "Don't have an account? " : "Already have an account? "}
-                </span>
-                <button
-                  onClick={() => setIsLogin(!isLogin)}
-                  className="text-primary hover:text-primary/80 transition-colors font-medium"
+              <div className="w-32 h-32 rounded-full border-2 border-primary/20 flex items-center justify-center">
+                <motion.div 
+                  className="w-24 h-24 rounded-full border-2 border-primary/40 flex items-center justify-center"
+                  animate={{
+                    rotate: [0, -180, -360],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 >
-                  {isLogin ? "Sign up" : "Login"}
-                </button>
+                  <PingPongBall />
+                </motion.div>
               </div>
             </motion.div>
-          </AnimatePresence>
-        </motion.div>
+
+            <motion.div 
+              className="absolute -left-10 bottom-0"
+              animate={{ 
+                rotate: [360, 180, 0],
+                y: [0, 15, 0],
+                x: [0, -10, 0]
+              }}
+              transition={{ 
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <div className="w-24 h-24 rounded-full border-2 border-primary/30 flex items-center justify-center">
+                <motion.div 
+                  className="w-16 h-16 rounded-full border-2 border-primary/50 flex items-center justify-center"
+                  animate={{
+                    rotate: [0, 180, 360],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{
+                    duration: 9,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <PingPongBall />
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Right side with auth form */}
+        <div className="lg:w-1/2 w-full max-w-md p-8 relative z-10">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className="p-8 bg-card backdrop-blur-sm border-primary/20 shadow-2xl">
+              <div className="mb-8">
+                <motion.h2 
+                  className="text-2xl font-bold text-foreground mb-2"
+                  initial={{ y: -20 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {isLogin ? "Welcome Back" : "Sign Up for Free"}
+                </motion.h2>
+                <motion.p 
+                  className="text-muted-foreground"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  Let's get you access to greatness
+                </motion.p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {!isLogin && (
+                  <div className="space-y-2">
+                    <Label htmlFor="username">Username</Label>
+                    <Input
+                      id="username"
+                      placeholder="Enter your username"
+                      className="bg-background/50 border-primary/20 focus:border-primary/50"
+                    />
+                  </div>
+                )}
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="bg-background/50 border-primary/20 focus:border-primary/50"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    className="bg-background/50 border-primary/20 focus:border-primary/50"
+                  />
+                </div>
+
+                <Button 
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    "Loading..."
+                  ) : (
+                    isLogin ? "Sign In" : "Create Account"
+                  )}
+                </Button>
+
+                <div className="text-center mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsLogin(!isLogin)}
+                    className="text-primary hover:text-primary/80 text-sm"
+                  >
+                    {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
+                  </button>
+                </div>
+              </form>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
