@@ -22,31 +22,31 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#030712", // Dark background
-        foreground: "#f8fafc",
+        background: "#121212", // Spotify's dark background
+        foreground: "#ffffff",
         primary: {
-          DEFAULT: "#10B981", // Chameleon green
-          foreground: "#ffffff",
+          DEFAULT: "#1DB954", // Spotify green
+          foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "#059669", // Darker chameleon green
-          foreground: "#ffffff",
+          DEFAULT: "#1ed760", // Spotify lighter green
+          foreground: "#000000",
         },
         destructive: {
-          DEFAULT: "#EF4444", // Keep red for destructive actions
+          DEFAULT: "#EF4444",
           foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "#1F2937",
-          foreground: "#9CA3AF",
+          DEFAULT: "#282828", // Spotify's card background
+          foreground: "#B3B3B3", // Spotify's secondary text
         },
         accent: {
-          DEFAULT: "#34D399", // Light chameleon green
-          foreground: "#ffffff",
+          DEFAULT: "#1fdf64", // Spotify's bright green
+          foreground: "#000000",
         },
         card: {
-          DEFAULT: "rgba(17, 24, 39, 0.7)", // Transparent dark
-          foreground: "#f8fafc",
+          DEFAULT: "rgba(40, 40, 40, 0.9)", // Spotify's card background with transparency
+          foreground: "#ffffff",
         },
       },
       keyframes: {
@@ -68,12 +68,12 @@ export default {
         },
         glow: {
           "0%, 100%": { 
-            boxShadow: "0 0 20px #10B981",
-            borderColor: "#10B981"
+            boxShadow: "0 0 20px #1DB954",
+            borderColor: "#1DB954"
           },
           "50%": { 
-            boxShadow: "0 0 30px #059669",
-            borderColor: "#059669"
+            boxShadow: "0 0 30px #1ed760",
+            borderColor: "#1ed760"
           }
         },
         float: {
