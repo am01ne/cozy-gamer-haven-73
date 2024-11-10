@@ -19,7 +19,7 @@ const AuthPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,18,0.7)_0%,rgba(124,58,237,0.2)_50%,rgba(3,7,18,0.7)_100%)] animate-pulse" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,18,18,0.8)_0%,rgba(29,185,84,0.2)_50%,rgba(18,18,18,0.8)_100%)] animate-pulse" />
       
       <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-8 relative">
         {/* Left side content */}
@@ -64,9 +64,9 @@ const AuthPage = () => {
                 ease: "easeInOut"
               }}
             >
-              <div className="w-32 h-32 rounded-full border-2 border-primary/20 flex items-center justify-center">
+              <div className="w-32 h-32 rounded-full border-2 border-[#1DB954]/20 flex items-center justify-center">
                 <motion.div 
-                  className="w-24 h-24 rounded-full border-2 border-primary/40 flex items-center justify-center"
+                  className="w-24 h-24 rounded-full border-2 border-[#1DB954]/40 flex items-center justify-center"
                   animate={{
                     rotate: [0, -180, -360],
                     scale: [1, 1.1, 1]
@@ -95,9 +95,9 @@ const AuthPage = () => {
                 ease: "easeInOut"
               }}
             >
-              <div className="w-24 h-24 rounded-full border-2 border-primary/30 flex items-center justify-center">
+              <div className="w-24 h-24 rounded-full border-2 border-[#1ed760]/30 flex items-center justify-center">
                 <motion.div 
-                  className="w-16 h-16 rounded-full border-2 border-primary/50 flex items-center justify-center"
+                  className="w-16 h-16 rounded-full border-2 border-[#1ed760]/50 flex items-center justify-center"
                   animate={{
                     rotate: [0, 180, 360],
                     scale: [1, 1.2, 1]
@@ -122,7 +122,7 @@ const AuthPage = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <Card className="p-8 bg-card backdrop-blur-sm border-primary/20 shadow-2xl">
+            <Card className="p-8 bg-card/90 backdrop-blur-sm border-[#1DB954]/20 shadow-[0_0_15px_rgba(29,185,84,0.1)]">
               <div className="mb-8">
                 <motion.h2 
                   className="text-2xl font-bold text-foreground mb-2"
@@ -149,7 +149,7 @@ const AuthPage = () => {
                     <Input
                       id="username"
                       placeholder="Enter your username"
-                      className="bg-background/50 border-primary/20 focus:border-primary/50"
+                      className="bg-background/50 border-[#1DB954]/20 focus:border-[#1DB954]/50"
                     />
                   </div>
                 )}
@@ -159,7 +159,7 @@ const AuthPage = () => {
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="bg-background/50 border-primary/20 focus:border-primary/50"
+                    className="bg-background/50 border-[#1DB954]/20 focus:border-[#1DB954]/50"
                   />
                 </div>
                 <div className="space-y-2">
@@ -168,13 +168,13 @@ const AuthPage = () => {
                     id="password"
                     type="password"
                     placeholder="Enter your password"
-                    className="bg-background/50 border-primary/20 focus:border-primary/50"
+                    className="bg-background/50 border-[#1DB954]/20 focus:border-[#1DB954]/50"
                   />
                 </div>
 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+                  className="w-full bg-gradient-to-r from-[#1DB954] to-[#1ed760] hover:opacity-90"
                   disabled={loading}
                 >
                   {loading ? (
@@ -188,7 +188,7 @@ const AuthPage = () => {
                   <button
                     type="button"
                     onClick={() => setIsLogin(!isLogin)}
-                    className="text-primary hover:text-primary/80 text-sm"
+                    className="text-[#1DB954] hover:text-[#1ed760] text-sm"
                   >
                     {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
                   </button>
