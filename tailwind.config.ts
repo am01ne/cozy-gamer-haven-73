@@ -22,18 +22,18 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#030712", // Darker background
+        background: "#030712", // Dark background
         foreground: "#f8fafc",
         primary: {
-          DEFAULT: "#7C3AED", // Vivid purple
+          DEFAULT: "#10B981", // Chameleon green
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#06B6D4", // Cyan
+          DEFAULT: "#059669", // Darker chameleon green
           foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "#EF4444", // Red
+          DEFAULT: "#EF4444", // Keep red for destructive actions
           foreground: "#ffffff",
         },
         muted: {
@@ -41,7 +41,7 @@ export default {
           foreground: "#9CA3AF",
         },
         accent: {
-          DEFAULT: "#4F46E5", // Indigo
+          DEFAULT: "#34D399", // Light chameleon green
           foreground: "#ffffff",
         },
         card: {
@@ -68,12 +68,12 @@ export default {
         },
         glow: {
           "0%, 100%": { 
-            boxShadow: "0 0 20px #7C3AED",
-            borderColor: "#7C3AED"
+            boxShadow: "0 0 20px #10B981",
+            borderColor: "#10B981"
           },
           "50%": { 
-            boxShadow: "0 0 30px #06B6D4",
-            borderColor: "#06B6D4"
+            boxShadow: "0 0 30px #059669",
+            borderColor: "#059669"
           }
         },
         float: {
