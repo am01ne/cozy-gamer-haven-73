@@ -22,30 +22,30 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#121212", // Spotify's dark background
+        background: "#0A0A0A", // Darker, richer background
         foreground: "#ffffff",
         primary: {
-          DEFAULT: "#1DB954", // Spotify green
+          DEFAULT: "#1FE660", // More vibrant Spotify green
           foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "#1ed760", // Spotify lighter green
+          DEFAULT: "#22FF6B", // Brighter secondary green
           foreground: "#000000",
         },
         destructive: {
-          DEFAULT: "#EF4444",
+          DEFAULT: "#FF3333", // More vibrant red
           foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "#282828", // Spotify's card background
-          foreground: "#B3B3B3", // Spotify's secondary text
+          DEFAULT: "#2A2A2A", // Richer muted background
+          foreground: "#CCCCCC", // Brighter muted text
         },
         accent: {
-          DEFAULT: "#1fdf64", // Spotify's bright green
+          DEFAULT: "#23FF69", // More vivid accent green
           foreground: "#000000",
         },
         card: {
-          DEFAULT: "rgba(40, 40, 40, 0.9)", // Spotify's card background with transparency
+          DEFAULT: "rgba(42, 42, 42, 0.95)", // Richer card background
           foreground: "#ffffff",
         },
       },
