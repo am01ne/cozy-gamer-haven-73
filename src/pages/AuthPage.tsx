@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,12 +10,16 @@ import PingPongBall from "@/components/PingPongBall";
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate loading
-    setTimeout(() => setLoading(false), 1000);
+    // Simulate loading and redirect
+    setTimeout(() => {
+      setLoading(false);
+      navigate('/profile');
+    }, 1000);
   };
 
   return (
